@@ -1,3 +1,5 @@
+# Copyright: Meta Platforms, Inc. and affiliates
+
 import os, json, shutil, string, ast
 from collections import Counter
 from tqdm import tqdm

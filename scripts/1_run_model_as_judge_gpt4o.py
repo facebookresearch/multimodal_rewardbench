@@ -1,3 +1,5 @@
+# Copyright: Meta Platforms, Inc. and affiliates
+
 import json
 import argparse
 import os
