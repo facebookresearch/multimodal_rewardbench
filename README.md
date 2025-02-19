@@ -26,12 +26,26 @@ Paper: [Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision 
 
 **Submit to leaderboard**:
 If you'd like to submit your work to the leaderboard, please create a pull request with the following information:
-
-- Your prediction file in JSONL format, where each line is a dictionary containing the key `{"output": <judge output concluding with [[A]] or [[B]]>}`. This will allow our accuracy calculation script (`scripts/2_get_accuracy.py`) to function correctly.
   
 - Code to run your model on the benchmark. You should provide a script similar to `scripts/1_run_model_as_judge_gpt4o.py`, which loads the model, runs inference, and saves predictions in JSONL format from start to finish.
 
+- Your prediction file in JSONL format (see `outputs/example.jsonl` for a toy example), where each line corresponds to each example of the original data, and is a dictionary like below. This will allow our accuracy calculation script (`scripts/2_get_accuracy.py`) to function correctly.
+```
+{
+  "Label": <A or B, as provided in data/all_data.json>, 
+  "output": <judge or reward model prediction, concluding with [[A]] or [[B]]>,
+  "ID": <ID, as provided in data/all_data.json>,
+  "Meta": {"Category": <Category, as provided in data/all_data.json>},
+}
+```
 
+
+## 0. Set up environment
+```
+conda create -n mmrewardbench python=3.10
+conda activate mmrewardbench
+pip install datasets==3.1.0 openai
+```
 
 ## 1. Download the dataset
 After you clone this repo, run the following script to download the original
@@ -67,12 +81,12 @@ example consists of:
 First, run a reward model or VLM-as-a-judge on the benchmark. Here is an
 example script if you run GPT-4o as judge:
 ```
-python scripts/1_run_model_as_judge_gpt4o.py
+python scripts/1_run_model_as_judge_gpt4o.py --answers-file outputs/gpt4o.jsonl
 ```
 
 Then, calculate the accuracy of the judge:
 ```
-python scripts/2_get_accuracy.py
+python scripts/2_get_accuracy.py --answers-file <your output file from previous command, e.g. outputs/example.jsonl>
 ```
 
 

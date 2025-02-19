@@ -348,7 +348,7 @@ def setup_emma_coding(data):
 
 
 def check_all_images_exist():
-    data = json.load(open(f"{ROOT}/all_data.json"))
+    data = json.load(open(f"{ROOT}/all_data_release.json"))
     for ex in tqdm(data):
         assert os.path.exists(f"{ROOT}/{ex['Image']}")
 
@@ -380,3 +380,4 @@ if __name__ == "__main__":
     setup_emma_coding(data)
 
     json.dump(data, open(f"{ROOT}/all_data.json", 'w'), indent=2)
+    print('Done.')

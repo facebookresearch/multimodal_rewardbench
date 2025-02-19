@@ -1,0 +1,6 @@
+*.pyc 
+
+data/images
+data/original_data
+data/tmp
+data/all_data.json
