@@ -2,7 +2,7 @@
 Multimodal RewardBench is a holistic benchmark for evaluating reward models for vision-language models (VLMs), covering six key areas: general correctness, preference, knowledge, reasoning, safety, and visual question-answering (VQA). 
 It provides 5,000 annotated triplets of (multimodal prompt, chosen response, rejected response).
 
-Paper: [Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision Language Models (coming soon)](https://arxiv.org/)
+Paper: [Multimodal RewardBench: Holistic Evaluation of Reward Models for Vision Language Models](https://arxiv.org/abs/2502.14191)
 
 
 <p align="center">
